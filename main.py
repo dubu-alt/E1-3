@@ -155,6 +155,42 @@ def measure_mac_time(filter_matrix: Matrix, pattern_matrix: Matrix,
     return total_time / iterations
 
 # ============================================================================
+# 5. 콘솔 입력 처리
+# ============================================================================
+
+def read_matrix_from_console(prompt: str, expected_size: int) -> Optional[Matrix]:
+    """
+    콘솔에서 n×n 행렬을 사용자 입력으로 읽기
+    
+    Args:
+        prompt: 출력할 안내 문구
+        expected_size: 기대하는 행렬 크기 (n)
+    
+    Returns:
+        Matrix 객체 또는 None (입력 실패 시)
+    """
+    print(prompt)
+    
+    data = []
+    for line_num in range(expected_size):
+        while True:
+            try:
+                line = input(f"줄 {line_num + 1}: ")
+                values = list(map(float, line.split()))
+                
+                if len(values) != expected_size:
+                    print(f"입력 형식 오류: 정확히 {expected_size}개의 숫자를 공백으로 구분해 입력하세요.")
+                    continue
+                
+                data.append(values)
+                break
+            
+            except ValueError:
+                print(f"입력 형식 오류: 각 줄에 {expected_size}개의 숫자를 공백으로 구분해 입력하세요.")
+    
+    return Matrix(data)
+
+# ============================================================================
 # 6. 모드 1: 사용자 입력 (3×3)
 # ============================================================================
 
