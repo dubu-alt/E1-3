@@ -27,6 +27,7 @@ class Matrix:
     
     def __repr__(self) -> str:
         return f"Matrix({self.size}×{self.size})"
+    
 def compute_mac(filter_matrix: Matrix, pattern_matrix: Matrix) -> float:
     """
     MAC(Multiply-Accumulate) 연산 수행
@@ -57,6 +58,33 @@ def compute_mac(filter_matrix: Matrix, pattern_matrix: Matrix) -> float:
             score += filter_matrix.get(i, j) * pattern_matrix.get(i, j)
     
     return score
+
+# ============================================================================
+# 2. 라벨 정규화 (Label Normalization)
+# ============================================================================
+
+def normalize_label(label: str) -> str:
+    """
+    라벨을 표준 형식으로 정규화
+    '+' → 'Cross', 'x' → 'X', 'cross' → 'Cross', 등
+    
+    Args:
+        label: 원본 라벨 (문자열)
+    
+    Returns:
+        정규화된 라벨 ('Cross' 또는 'X')
+    
+    Raises:
+        ValueError: 인식 불가능한 라벨
+    """
+    label = str(label).strip().lower()
+    
+    if label in ('+', 'cross'):
+        return 'Cross'
+    elif label in ('x',):
+        return 'X'
+    else:
+        raise ValueError(f"인식 불가능한 라벨: {label}")
 
 # ============================================================================
 # 6. 모드 1: 사용자 입력 (3×3)
