@@ -87,6 +87,47 @@ def normalize_label(label: str) -> str:
         raise ValueError(f"인식 불가능한 라벨: {label}")
 
 # ============================================================================
+# 3. 점수 비교 및 판정 (Epsilon 기반)
+# ============================================================================
+
+EPSILON = 1e-9
+
+def judge_scores(score_a: float, score_b: float) -> str:
+    """
+    두 점수를 비교하여 판정 결과 반환
+    
+    Args:
+        score_a: A 필터의 점수
+        score_b: B 필터의 점수
+    
+    Returns:
+        'A', 'B', 또는 'UNDECIDED'
+    """
+    diff = abs(score_a - score_b)
+    
+    if diff < EPSILON:
+        return 'UNDECIDED'
+    elif score_a > score_b:
+        return 'A'
+    else:
+        return 'B'
+
+
+def label_from_judgment(result: str) -> Optional[str]:
+    """
+    판정 결과를 라벨로 변환
+    
+    Args:
+        result: 'A', 'B', 또는 'UNDECIDED'
+    
+    Returns:
+        'Cross', 'X', 또는 None (UNDECIDED인 경우)
+    """
+    # 가정: A = Cross, B = X
+    label_map = {'A': 'Cross', 'B': 'X'}
+    return label_map.get(result)
+
+# ============================================================================
 # 6. 모드 1: 사용자 입력 (3×3)
 # ============================================================================
 
