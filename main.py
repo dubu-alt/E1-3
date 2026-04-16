@@ -1,4 +1,35 @@
 # ============================================================================
+# 1. 2차원 배열 데이터 구조 및 MAC 연산
+# ============================================================================
+
+class Matrix:
+    """n×n 2차원 배열을 저장하고 접근하는 클래스"""
+    
+    def __init__(self, data: List[List[float]]):
+        """
+        Args:
+            data: 2차원 리스트 (모두 같은 행 길이)
+        """
+        self.data = data
+        self.size = len(data)  # n×n의 n
+        
+        # 검증: 모든 행의 길이가 같은지 확인
+        if not all(len(row) == self.size for row in data):
+            raise ValueError(f"모든 행의 길이가 {self.size}이어야 합니다.")
+    
+    def get(self, i: int, j: int) -> float:
+        """위치 (i, j)의 값 반환"""
+        return self.data[i][j]
+    
+    def set(self, i: int, j: int, value: float) -> None:
+        """위치 (i, j)에 값 설정"""
+        self.data[i][j] = value
+    
+    def __repr__(self) -> str:
+        return f"Matrix({self.size}×{self.size})"
+
+
+# ============================================================================
 # 6. 모드 1: 사용자 입력 (3×3)
 # ============================================================================
 
