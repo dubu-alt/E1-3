@@ -440,3 +440,33 @@ def mode_json_analysis():
         for pattern_key, status, reason in test_results:
             if status == 'FAIL':
                 print(f"- {pattern_key}: {reason}")
+
+# ============================================================================
+# 8. 메인 함수
+# ============================================================================
+
+def main():
+    """프로그램 메인 함수"""
+    print("\n" + "=" * 50)
+    print("=== Mini NPU Simulator ===")
+    print("=" * 50)
+    
+    print("\n[모드 선택]\n")
+    print("1. 사용자 입력 (3×3)")
+    print("2. data.json 분석")
+    
+    while True:
+        choice = input("\n선택: ").strip()
+        
+        if choice == '1':
+            mode_user_input()
+            break
+        elif choice == '2':
+            mode_json_analysis()
+            break
+        else:
+            print("잘못된 선택입니다. 1 또는 2를 입력하세요.")
+
+
+if __name__ == '__main__':
+    main()
