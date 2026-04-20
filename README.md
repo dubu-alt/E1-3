@@ -346,6 +346,9 @@ def judge_scores(score_a: float, score_b: float) -> str:
   ```
 
 ---
+## 코드 동작
+<img width="659" height="525" alt="스크린샷 2026-04-20 오전 11 52 23" src="https://github.com/user-attachments/assets/200a8395-f40a-462d-bae9-e24863e9ef02" />
+
 
 ## 4. 성능 분석 및 시간 복잡도
 
