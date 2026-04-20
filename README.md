@@ -24,6 +24,9 @@ python main.py
 2. data.json 분석
 선택: 1
 ```
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/d689a0a1-9ee6-4a96-8963-329a519b246d" />
+
 ---
  
 ## 모드 1 - 사용자 직접 입력 (3×3)
